@@ -346,7 +346,6 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('default', ['server']);
-
     <% if (cloud) { %>
     grunt.registerTask('dist', function (target) {
         var tasks = ['jshint', 'test', 'build'];
@@ -393,12 +392,10 @@ module.exports = function (grunt) {
 
             done(!!!err);
         });
-    });
-    <% } else { %>
+    }); <% } else { %>
     grunt.registerTask('dist', [
         'jshint',
         'test',
         'build'
-    ]);
-    <% } %>
+    ]); <% } %>
 };
