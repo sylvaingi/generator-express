@@ -1,0 +1,18 @@
+---
+applications:
+  .:
+    name: <%= _.slugify(appname) %>
+    framework:
+      name: node
+      info:
+        mem: 64M
+        description: Node.js Application
+        exec:
+    infra: eu-aws
+    mem: 64M
+    instances: 1
+    services:
+      mongodb-43592:
+        type: mongodb
+    env:
+      NODE_ENV: production
