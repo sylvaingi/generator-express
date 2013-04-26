@@ -35,7 +35,7 @@ ExpressGenerator.prototype.askFor = function askFor() {
 
     var prompts = [{
         name: 'cloud',
-        message: 'Is this app going to be deployed on a Paas?',
+        message: 'Is this app going to be deployed on a Paas (Cloudfoundry, Appfog, etc.)?',
         default: 'Y/n'
     }];
 
