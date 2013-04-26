@@ -1,4 +1,4 @@
-/*global describe it beforeEach*/
+/*global describe, beforeEach, afterEach, it */
 'use strict';
 var should = require('chai').should();
 var sinon = require('sinon');
@@ -15,11 +15,9 @@ describe('Post controller', function() {
     });
 
     describe('GET /post route ', function(){
-        it("should be defined", function(){
+        it('should be defined', function(){
             app.get.calledWith('/post').should.to.be.true;
         });
-
-        it('')
     });
 
 });

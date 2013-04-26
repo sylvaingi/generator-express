@@ -1,4 +1,4 @@
-/*global describe it */
+/*global describe, beforeEach, afterEach, it, expect */
 'use strict';
 (function () {
     describe('Give it some context', function () {
