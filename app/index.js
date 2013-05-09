@@ -37,6 +37,10 @@ ExpressGenerator.prototype.askFor = function askFor() {
         name: 'cloud',
         message: 'Is this app going to be deployed on a Paas (Cloudfoundry, Appfog, etc.)?',
         default: 'Y/n'
+    },{
+        name: 'includeSassLibs',
+        message: 'Would you like some additional SASS librairies?',
+        default: 'Y/n'
     }];
 
     this.prompt(prompts, function (err, props) {
@@ -45,6 +49,7 @@ ExpressGenerator.prototype.askFor = function askFor() {
         }
 
         this.cloud = (/y/i).test(props.cloud);
+        this.includeSassLibs = (/y/i).test(props.includeSassLibs);
 
         cb();
     }.bind(this));
@@ -83,8 +88,19 @@ ExpressGenerator.prototype.cfManifests = function cfManifests() {
     }
 };
 
+ExpressGenerator.prototype.mainStylesheet = function mainStylesheet() {
+    if (this.includeSassLibs) {
+        this.directory('sass', 'client/styles/libs');
+        this.write('client/styles/main.scss', '@import "compass";\n@import "compass/css3";\n@import "compass/reset";\n\n@import "libs/animations";\n@import "libs/media-queries";');
+    }else {
+        this.write('client/styles/main.scss', '@import "compass";\n@import "compass/css3";\n@import "compass/reset";');
+    }
+};
+
 ExpressGenerator.prototype.app = function app() {
     this.directory('client');
+    this.mkdir('client/styles');
+    this.mkdir('client/images');
     this.directory('server');
 
     if (this.cloud) {
