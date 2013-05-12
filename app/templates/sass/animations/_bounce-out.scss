@@ -1,0 +1,21 @@
+@include keyframes (bounceOut) {
+    0% {
+        @include scale(1);
+    }
+    50% {
+        @include scale(0.95);
+    }
+    70% {
+        opacity: 1;
+        @include scale(1.1);
+    }
+    100% {
+        opacity: 0;
+        @include scale(0.3);
+    }
+}
+
+.bounceOut {
+    @extend .animated;
+    @include animation-name(bounceOut);
+}
