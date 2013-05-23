@@ -100,6 +100,7 @@ ExpressGenerator.prototype.mainStylesheet = function mainStylesheet() {
 ExpressGenerator.prototype.app = function app() {
     this.directory('client');
     this.mkdir('client/styles');
+    this.mkdir('client/views');
     this.mkdir('client/images');
     this.directory('server');
 
